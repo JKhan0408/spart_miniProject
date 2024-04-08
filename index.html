@@ -8,14 +8,22 @@
     <!-- 부트스트랩 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 
-        * {
+        #header,
+        #footer,
+        .mainBody {
             font-family: "Nanum Pen Script", cursive;
+        }
+
+        #header {
+            font-size: x-large;
+        }
+
+        #footer {
             font-size: large;
         }
 
@@ -49,14 +57,13 @@
 
     <script>
         function show_home() {
-            // 새로고침
             window.location.reload();
         }
     </script>
 </head>
 
 <body>
-    <header class="p-3 mb-3 border-bottom">
+    <header id="header" class="p-3 mb-3 border-bottom">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
@@ -66,18 +73,13 @@
                 </a>
                 <ul id="navUL" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <!-- 새로고침 -->
-                    <li><a href="#" class="nav-link px-2 link-secondary" onclick="show_home()">Home</a></li>
-                    <!-- 팀원 
-                    1. pages 폴더에 제작한 html 파일을 업로드하세요.
-                    2. 아래 a 태그에 href에서 "#"" 지우고 "pages/업로드한파일이름.html" 로 경로 변경하세요.
-                    3. 1234 숫자 대신 본인임을 식별할 수 있게 이름이나 이니셜 등을 자유롭게 적습니다.
-                    4. 내 페이지가 새창이나 새탭에서 뜨는 게 싫으면 a태그 내 target="_blank" 속성을 지워주세요.
-                    -->
-                    <li><a href="pages/jkhan.html" target="_blank" class="nav-link px-2 link-body-emphasis">JKHAN</a></li>
-                    <li><a href="#" target="_blank" class="nav-link px-2 link-body-emphasis">1</a></li>
-                    <li><a href="#" target="_blank" class="nav-link px-2 link-body-emphasis">2</a></li>
-                    <li><a href="#" target="_blank" class="nav-link px-2 link-body-emphasis">3</a></li>
-                    <li><a href="#" target="_blank" class="nav-link px-2 link-body-emphasis">4</a></li>
+                    <li><a href="index.html" class="nav-link px-2 link-secondary" onclick="show_home()">Home</a></li>
+                    <li><a href="pages/jkhan.html" class="nav-link px-2 link-body-emphasis">예시</a></li>
+                    <!-- 팀원 -->
+                    <li><a href="pages/MSJ.html" class="nav-link px-2 link-body-emphasis">1</a></li>
+                    <li><a href="pages/HSY.html" class="nav-link px-2 link-body-emphasis">2</a></li>
+                    <li><a href="pages/CSH.html" class="nav-link px-2 link-body-emphasis">3</a></li>
+                    <li><a href="pages/LMH.html" class="nav-link px-2 link-body-emphasis">4</a></li>
                 </ul>
             </div>
         </div>
@@ -85,10 +87,10 @@
 
     <div class="mainBody">
         <h1>우리들의 첫 페이지</h1>
-        <h2>상단바의 이름을 클릭하면 개인이 만든 웹 페이지로 이동합니다.</h2>
+        <h2>상단바의 번호를 눌러서 숨겨진 기능을 확인해보세요😊</h2>
     </div>
 
-    <div class="container">
+    <div id="footer" class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <div class="col-md-4 d-flex align-items-center">
                 <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
