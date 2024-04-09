@@ -13,6 +13,9 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+        /* mainBody폰트 */
+        @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100..900&display=swap');
+        
 
         #header,
         #footer {
@@ -35,7 +38,7 @@
 
         .mainBody {
             width: 85%;
-            height: 70%;
+            min-height: 70%; /*범위 넘어가서 min-height로 변경*/
             margin: 30px auto 0px auto;
 
             /* 
@@ -43,12 +46,51 @@
             글자색, 배경색은 영역 크기를 확인하기 위해 설정해두었습니다. 
             지우고 작업하셔도 됩니다.
             */
-            color: black;
-            background-color: aqua;
-            font-size: xx-large;
         }
 
         /* CSS 추가 시 아래에 작성해주세요. */
+        /* 기본 폰트스타일 */
+        .mainBody{
+            font-family: "Hahmlet", serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+        }
+
+        
+        /*취미소개*/
+        .hbcards {
+            width: 1200px;
+            margin: 50px auto 50px auto;
+        }
+
+        /* 취미 입력하기 박스 */
+        .hbpostingbox {
+            width: 500px;
+            margin: 30px auto 30px auto;
+            border: 1px solid rgb(112, 112, 112);
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .hbpostingbox>h2 {
+
+            display: flex;
+            /*텍스트 중앙정렬*/
+            flex-direction: row;
+            align-items: center;
+            /*세로정렬 가운데로*/
+            justify-content: center;
+        }
+
+        .hbpostingbox>button {
+            width: 100%;
+        }
+
+        /* 박스-소개 사이 점선 대쉬 */
+        hr {
+            border-top: 1px dashed #bbb;
+        }
     </style>
 
     <script>
@@ -57,7 +99,53 @@
         }
 
         // 아래에 추가해주세요.
+        function makeHbCard() {
 
+            let hbImage = $('#image').val();
+            let hbTitle = $('#title').val();;
+            let hbTxtArea = $('#hbTxtArea').val();
+
+            // 체크박스 입력 전까지
+            let hb_temp_html = `
+            <div class="col">
+                <div class="card h-100">
+                    <img src="${hbImage}"
+                        class="card-img-top" alt="...">
+
+                    <div class="card-body">
+                        <h5 class="card-title">${hbTitle}</h5>
+                        <p class="card-text">${hbTxtArea}</p>
+                    </div>
+        
+                    <div class="card-footer">
+                        <div id="hbbtn" class="row row-cols-1 row-cols-md-6 g-0 gap-2 justify-content-center">`
+
+            let ChoiSH = `<button id="ChoiSH_btn" class="btn btn-warning rounded-pill px-1" type="button"> 최성훈</button>`
+            let HanJK = `<button id="HanJK_btn" class="btn btn-success rounded-pill px-1" type="button"> 한진경</button>`
+            let MoonSJ = `<button id="MoonSJ_btn" class="btn btn-secondary rounded-pill px-1" type="button"> 문수정</button>`
+            let HongSY = `<button id="HongSY_btn" class="btn btn-danger rounded-pill px-1" type="button"> 홍서영</button>`
+            let LeeMH = `<button id="LeeMH_btn" class="btn btn-primary rounded-pill px-1" type="button"> 이민호</button>`
+
+            if ($("#ChoiSH_cb").is(":checked"))
+                hb_temp_html += ChoiSH;
+            if ($("#HanJK_cb").is(":checked"))
+                hb_temp_html += HanJK;
+            if ($("#MoonSJ_cb").is(":checked"))
+                hb_temp_html += MoonSJ;
+            if ($("#HongSY_cb").is(":checked"))
+                hb_temp_html += HongSY;
+            if ($("#LeeMH_cb").is(":checked"))
+                hb_temp_html += LeeMH;
+
+            hb_temp_html += `
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `
+
+            $('#hbCard').append(hb_temp_html);
+        };
     </script>
 </head>
 
@@ -89,12 +177,154 @@
             아래 p태그는 지우고 작업해주세요.
             배경색, 글자색 변경은 CSS에 있습니다.
         -->
-        <p>
-            헤더, 푸터, 파일명 등은 바꾸면 안 되요.<br>
-            mainBody 영역의 크기 확인을 위해 배경색을 지정해두었습니다.<br>
-            글자색은 검정으로 설정했습니다. 자유롭게 수정하세요.<br>
-            예시 페이지는 홈 화면에서만 확인할 수 있으며, 제출 전에 삭제 예정입니다.<br>
-        </p>
+                <!-- 취미 입력하기 -->
+        <div class="hbpostingbox">
+            <h2>취미 입력하기</h2>
+            <hr />
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="image" placeholder="취미 이미지 주소">
+                <label for="floatingInput">취미 이미지 주소</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="title" placeholder="취미 이름">
+                <label for="floatingInput">취미 이름</label>
+            </div>
+
+            <!-- textarea로 긴 텍스트 입력하기, placeholder로 미리보기 텍스트 표시 -->
+            <div class="mb-3">
+                <textarea class="form-control" id="hbTxtArea" rows="3" placeholder="관련 설명을 적어주세요."></textarea>
+            </div>
+
+            <div class="mb-3">
+                <p class="form-label">이 취미를 가진 팀원은 누구인가요?</p>
+                <br />
+
+                <!-- 버튼 배치하는 div. just..center가 가운데 정렬, gap으로 버튼 간 여유주기-->
+                <div id="teamHobby" class="row row-cols-1 row-cols-md-4 g-0 gap-3 justify-content-center">
+
+                    <button id="ChoiSH_btn" class="btn btn-warning rounded-pill px-3" type="button"><input
+                            id="ChoiSH_cb" class="form-check-input" type="checkbox" value="ChoiSH" name="hbCb"
+                            aria-label="Checkbox for following text input">
+                        최성훈</button>
+
+                    <button id="HanJK_btn" class="btn btn-success rounded-pill px-3" type="button"><input id="HanJK_cb"
+                            class="form-check-input" type="checkbox" value="HanJK" name="hbCb"
+                            aria-label="Checkbox for following text input">
+                        한진경</button>
+
+                    <button id="MoonSJ_btn" class="btn btn-secondary rounded-pill px-3" type="button"><input
+                            id="MoonSJ_cb" class="form-check-input" type="checkbox" value="MoonSJ" name="hbCb"
+                            aria-label="Checkbox for following text input">
+                        문수정</button>
+
+                    <button id="HongSY_btn" class="btn btn-danger rounded-pill px-3" type="button"><input id="HongSY_cb"
+                            class="form-check-input" type="checkbox" value="HongSY" name="hbCb"
+                            aria-label="Checkbox for following text input">
+                        홍서영</button>
+
+                    <button id="LeeMH_btn" class="btn btn-primary rounded-pill px-3" type="button"><input id="LeeMH_cb"
+                            class="form-check-input" type="checkbox" value="LeeMH" name="hbCb"
+                            aria-label="Checkbox for following text input">
+                        이민호</button>
+
+                </div>
+            </div>
+            <br />
+
+            <!-- 버튼 누르면 아래에 있는 취미 소개란에 등록됨 -->
+            <button onclick="makeHbCard()" type="button" class="btn btn-dark">등록하기</button>
+
+        </div>
+
+        <hr />
+
+        <!-- 취미카드 div -->
+        <div class="hbcards">
+            <h2>취미 소개</h2>
+            <br />
+
+            <div id="hbCard" class="row row-cols-1 row-cols-md-3 g-3">
+
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1521302200778-33500795e128?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="...">
+
+                        <div class="card-body">
+                            <h5 class="card-title">유튜브 보기</h5>
+                            <p class="card-text">만인의 취미</p>
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="hbbtn" class="row row-cols-1 row-cols-md-6 g-0 gap-2 justify-content-center">
+                                <button class="btn btn-warning rounded-pill px-1" type="button">
+                                    최성훈</button>
+                                <button class="btn btn-success rounded-pill px-1" type="button">
+                                    한진경</button>
+                                <button class="btn btn-secondary rounded-pill px-1" type="button">
+                                    문수정</button>
+                                <button class="btn btn-danger rounded-pill px-1" type="button">
+                                    홍서영</button>
+                                <button class="btn btn-primary rounded-pill px-1" type="button">
+                                    이민호</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="...">
+
+                        <div class="card-body">
+                            <h5 class="card-title">게임</h5>
+                            <p class="card-text">재미있는 게임</p>
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="hbbtn" class="row row-cols-1 row-cols-md-6 g-0 gap-2 justify-content-center">
+                                <button class="btn btn-warning rounded-pill px-1" type="button">
+                                    최성훈</button>
+                                <button class="btn btn-success rounded-pill px-1" type="button">
+                                    한진경</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="...">
+
+                        <div class="card-body">
+                            <h5 class="card-title">음악감상</h5>
+                            <p class="card-text">공부할 때도 쉴 때도 빼놓을 수 없어요</p>
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="hbbtn" class="row row-cols-1 row-cols-md-6 g-0 gap-2 justify-content-center">
+                                <button class="btn btn-secondary rounded-pill px-1" type="button">
+                                    문수정</button>
+                                <button class="btn btn-danger rounded-pill px-1" type="button">
+                                    홍서영</button>
+                                <button class="btn btn-primary rounded-pill px-1" type="button">
+                                    이민호</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        
     </div>
 
     <!-- 푸터 -->
