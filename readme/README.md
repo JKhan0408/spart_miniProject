@@ -6,7 +6,7 @@
 
 <ins>**작업파일**</ins> <br>
 index.html : 한진경 <br>
-jkhan.html: 한진경. 예시. 삭제하거나 confer 폴더로 이동 예정 <br><br>
+jkhan.html: 한진경. index.html 헤더에서 제거.
 
 작업할 파일의 이름은 이니셜입니다.<br>
 MSJ.html : 문수정 - 취미 등록<br>
