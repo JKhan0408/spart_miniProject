@@ -76,7 +76,7 @@
                 opacity: 0.8;
                 margin: auto auto auto auto;
                 height: auto;
-                width: 30%;
+                width: 40%;
         }
     </style>
 
@@ -91,6 +91,11 @@
         let hsy = ['hsy', '홍서영', 'ISFP인 홍서영', 'https://github.com/hongsy521', 'https://velog.io/@hongsy521/posts'];
         let csh = ['csh', '최성훈', 'mbti가 밝혀지지 않은 최성훈', 'https://github.com/choisunghoon20240313', 'https://blog.naver.com/cjhfifi64'];
         let lmh = ['lmh', '이민호', 'ESTP인 이민호', 'https://github.com/2minus', ''];
+
+        let text_l = [
+            "팀원이 당신과 잘 맞을수도 있습니닷!",
+            "팀원과 같은 성향입니다. 공통점을 찾으셨네요 축하드립니다!"
+        ]
         // mbti 텍스트
         let mbti_l = ['ESTP', 'ESFJ', 'ESFP', 'ESTJ', 'ENTP', 'ENTJ', 'ENFP', 'ENFJ',
             'ISTP', 'ISTJ', 'ISFP', 'ISFJ', 'INTP', 'INTJ', 'INFP', 'INFJ'];
@@ -151,9 +156,20 @@
             var rand = Math.random(); // 확률변수 생성
 
             var member1 = [];
+            var m1de = text_l[0];
             var member2 = [];
+            var m2de = text_l[0];
             // 입력된 mbti와 관련된 팀원을 불러옴
-            if (res == "ENTJ" || res == "ENFJ") {
+             if (res == "INFP" || res == "ISFP" || res == "ESTP") {
+                var m1de = text_l[1];
+                if (res == "INFP") {
+                    var member1 = msj;
+                } else if (res == "ISFP") {
+                    var member1 = hsy;
+                } else {
+                    var member1 = lmh;
+                }
+            } else if (res == "ENTJ" || res == "ENFJ") {
                 var member1 = msj;
             } else if (res == "ESFJ" || res == "ESTJ") {
                 var member1 = hsy;
@@ -168,6 +184,7 @@
                     var member2 = hjk;
                 }
             }
+
             if (rand < 0.5) {
                 var member2 = csh;
             } else {
