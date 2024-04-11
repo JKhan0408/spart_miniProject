@@ -141,14 +141,6 @@
         // 입력된 값(mbti)로 html을 생성하는 함수
         function opresult(res) {
             $("#mbtiresult").toggle();
-            // 입력된 mbti를 비교
-            for (i = 0; i < mbti_l.length; i++) {
-                if (res == mbti_l[i]) {
-                    break;
-                } else {
-                    continue;
-                }
-            }
             // 입력된 mbti를 바탕으로 저장된 변수를 불러옴
             let mbtiimgdir = "./img/" + res + ".png";
             let title = title_dic[res];
