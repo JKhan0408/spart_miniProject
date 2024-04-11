@@ -149,10 +149,18 @@
 
     var dateString = year + '-' + month  + '-' + day;
 
+    var hours = ('0' + today.getHours()).slice(-2); 
+    var minutes = ('0' + today.getMinutes()).slice(-2);
+    var seconds = ('0' + today.getSeconds()).slice(-2); 
+
+    var timeString = hours + ':' + minutes  + ':' + seconds;
+
+    var currentDateTime=dateString+' '+timeString;
+
     let doc = {
       'title':title,
       'content':content,
-      'date':dateString
+      'date':currentDateTime
     };
     await addDoc(collection(db, "posting1"), doc);
     alert("글 작성 완료");
@@ -264,11 +272,18 @@ $('#nextpost').click(async function(){
 
     var dateString = year + '-' + month  + '-' + day;
 
+    var hours = ('0' + today.getHours()).slice(-2); 
+    var minutes = ('0' + today.getMinutes()).slice(-2);
+    var seconds = ('0' + today.getSeconds()).slice(-2); 
+
+    var timeString = hours + ':' + minutes  + ':' + seconds;
+
+    var currentDateTime=dateString+' '+timeString;
 
     let doc = {
       'name':name,
       'comment':comment,
-      'date':dateString
+      'date':currentDateTime
     };
     await addDoc(collection(db, "comment"), doc);
     alert("댓글 작성 완료");
@@ -325,7 +340,6 @@ documentSnapshots.forEach((doc) => {
 })
 
 const lastVisibleComment = documentSnapshots.docs[documentSnapshots.docs.length-1];
-console.log("last", lastVisibleComment);
 
 
     $('#nextcomment').click(async function(){
